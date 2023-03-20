@@ -2,6 +2,6 @@
 #include "ArrayInt.h"
 int main()
 {
-	IntArray array(100);
+	IntArray array(10);
 	return 0;
 }
