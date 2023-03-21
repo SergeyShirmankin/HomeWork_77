@@ -12,4 +12,6 @@ public:
 	IntArray(int length);
 	int getLength();
 	int& operator[](const int index);
+	IntArray&  operator=(const IntArray& a);
+	void show();
 };

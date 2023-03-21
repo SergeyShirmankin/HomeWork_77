@@ -3,9 +3,12 @@
 #include "BadLength.h"
 int main()
 {
-	IntArray array(100);//создание массива 
+	IntArray array(10);//создание массива 
+	IntArray arrayCopy(15);//массив для тестировании копии
 	try {
-		array[105] = 15;//присваивание массиву  данные
+		array[5] = 15;//присваивание массиву  данные
+		std::cout <<" array[5] = "<< array[5]<<std::endl;//Вывод элемент массива;
+		arrayCopy = array;//копирование массива
 	}
 	catch (BadLength &exception) // сначала ловим исключения дочернего класса - исключения
 	{
@@ -15,6 +18,8 @@ int main()
 	{
 		std::cerr << "Some other std::exception occurred (" << exception.what() << ")\n";
 	}
-
+	array.show();
+	std::cout << "arrayCopy" << endl;
+	arrayCopy.show();
 	return 0;
 }
