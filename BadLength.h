@@ -3,7 +3,6 @@
 #include <exception>
 using namespace std;
 class BadLength : public exception
-//class BadLength
 {
 private:
 	string m_error;

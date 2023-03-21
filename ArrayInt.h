@@ -10,5 +10,6 @@ private:
 public:
 	IntArray() = default;
 	IntArray(int length);
-
+	int getLength();
+	int& operator[](const int index);
 };
