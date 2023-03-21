@@ -16,4 +16,5 @@ public:
 	void insertBefore(int value, int index);
 	void show();
 	void remove(int index);
+	void find(int value);
 };

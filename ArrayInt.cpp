@@ -1,29 +1,29 @@
 #include "ArrayInt.h"
 #include "BadLength.h"
-IntArray::IntArray(int length) : m_length(length)
+IntArray::IntArray(int length) : m_length(length)//конструктор массива
 {
 	try
 	{
-		m_data = new int[length] {};
+		m_data = new int[length] {}; // проверка правильности индекса и размера выделени€ пам€ти
 	}
 	catch (bad_alloc& ba)
 	{
-		cout << "bad_alloc caught!" << endl;
+		cout << "bad_alloc caught!" << endl; //при неудаче выдавать ошибку
 		cout << ba.what() << endl;
 	}
 }
 
-int IntArray::getLength() { return m_length; }
+int IntArray::getLength() { return m_length; } //геттер
 
-int& IntArray::operator[](const int index)
+int& IntArray::operator[](const int index)//оператор присваивани€ и отображении значени€ массива (переопределенный)
 {
 		if (index < 0 || index >= getLength())
-			throw BadLength("Invalid index");
+			throw BadLength("Invalid index");//выбрасывают аварию
 		return m_data[index];	
 }
 
 
-IntArray& IntArray:: operator=(const IntArray& a)
+IntArray& IntArray:: operator=(const IntArray& a)//оператор копировани€ (переопределеннна€)
 {
    if (&a == this)//ѕроверка на самоназначначени€ адреса
      return *this;
@@ -38,7 +38,7 @@ IntArray& IntArray:: operator=(const IntArray& a)
   return *this;
 }
 
-void IntArray::show()
+void IntArray::show()//отобразить элементы массива на экране
 {
 	for (int i = 0; i < m_length; ++i)
 	{
@@ -46,7 +46,7 @@ void IntArray::show()
 	}
 }
 
-void IntArray::insertBefore(int value, int index)
+void IntArray::insertBefore(int value, int index)//¬ставить элемент массива по индексу и по значению
 {
 	// ѕровер€ем правильность нашего значени€ индекса
 	if (index >= 0 && index <= m_length)
@@ -63,10 +63,10 @@ void IntArray::insertBefore(int value, int index)
 	}
 	else
 	{
-		throw BadLength("Index not border");
+		throw BadLength("Index not border");//если не входим в диапазон то запускаем аварию
 	}
 }
-void IntArray::remove(int index)
+void IntArray::remove(int index)//”даление одного элемента массива по индексу 
 {
 	if (index >= 0 && index <= m_length)
 	{
@@ -83,6 +83,18 @@ void IntArray::remove(int index)
 	}
 	else
 	{
-		throw BadLength("Index not border");
+		throw BadLength("Index not border");//если не входим в диапазон то запускаем аварию
+	}
+}
+void IntArray::find(int value)//поиск в массиве данных
+{
+	for (int i = 0; i < m_length; ++i)
+	{
+		if (m_data[i] == value)
+		{
+			std::cout<<std::endl;
+			std::cout << "Finded  m_data[" << i << "] = " << m_data[i] << "  adress = " << &m_data[i] << endl;
+			std::cout << std::endl;
+		}
 	}
 }

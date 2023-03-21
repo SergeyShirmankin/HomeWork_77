@@ -12,6 +12,7 @@ int main()
 		array.insertBefore(13, 6);//вставка элемента массива
 		array.show();
 		array.remove(1);//Удаление элемента массива;
+		arrayCopy.find(15);//Поиск элемента массива
 	}
 	catch (BadLength &exception) // сначала ловим исключения дочернего класса - исключения
 	{
