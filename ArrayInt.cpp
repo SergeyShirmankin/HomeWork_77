@@ -45,3 +45,45 @@ void IntArray::show()
 		std::cout << "m_data[" << i << "] = " << m_data[i]<<"  adress = "<< &m_data[i] << endl;
 	}
 }
+
+void IntArray::insertBefore(int value, int index)
+{
+	// Проверяем правильность нашего значения индекса
+	if (index >= 0 && index <= m_length)
+	 {
+		int* data{ new int[m_length + 1] };// Сначала создаем новый массив на один элемент больше, чем старый массив
+		for (int before{ 0 }; before < index; ++before)// Копируем все элементы до индекса
+			data[before] = m_data[before];
+		data[index] = value;// Вставляем наш новый элемент в новый массив
+		for (int after{ index }; after < m_length; ++after)// Копируем все значения после вставленного элемента
+			data[after + 1] = m_data[after];
+		delete[] m_data;// Наконец, удаляем старый массив и используем вместо него новый массив
+		m_data = data;
+		++m_length;
+	}
+	else
+	{
+		throw BadLength("Index not border");
+	}
+}
+//void IntArray::remove(int index)
+//{
+//	if (index >= 0 && index <= m_length)
+//	{
+//	int* data{ new int[m_length - 1] };// Сначала создаем новый массив на один элемент меньше, чем старый массив
+//	// Копируем все элементы до индекса
+//	for (int before{ 0 }; before < index; ++before)	// Копируем все элементы до индекса
+//		data[before] = m_data[before];	
+//	for (int after{ index + 1 }; after < m_length; ++after)// Копируем все значения после удаленного элемента
+//		data[after - 1] = m_data[after];
+//	// Наконец, удаляем старый массив и используем вместо него новый массив
+//	delete[] m_data;
+//	m_data = data;
+//	--m_length;
+//   }
+//	else
+//	{
+//	throw BadLength("Index not border");
+//    }
+//
+//

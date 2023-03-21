@@ -13,5 +13,7 @@ public:
 	int getLength();
 	int& operator[](const int index);
 	IntArray&  operator=(const IntArray& a);
+	void insertBefore(int value, int index);
 	void show();
+	void remove(int index);
 };

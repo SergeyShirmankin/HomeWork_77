@@ -4,11 +4,13 @@
 int main()
 {
 	IntArray array(10);//создание массива 
-	IntArray arrayCopy(15);//массив для тестировании копии
+	IntArray arrayCopy(10);//массив для тестировании копии
 	try {
 		array[5] = 15;//присваивание массиву  данные
 		std::cout <<" array[5] = "<< array[5]<<std::endl;//Вывод элемент массива;
 		arrayCopy = array;//копирование массива
+		array.insertBefore(13, 6);//вставка элемента массива
+		array.remove(5);//Удаление элемента массива;
 	}
 	catch (BadLength &exception) // сначала ловим исключения дочернего класса - исключения
 	{
